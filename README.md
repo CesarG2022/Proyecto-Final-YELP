@@ -1,4 +1,20 @@
-# PF-YELP
+# PROYECTO FINAL -PLUS YELP
+> “Connect and simplify big data to make the best investment decisions.”
+
+> **Note**<br>
+> This README file is written in Spanish. To go to the English version [click here](README_EN.md).
+
+**Tabla de Contenido:**
+---
+- [Descripción del proyecto](#el-proyecto-)
+- [Equipo](#equipo-)
+- [Archivos](#el-repositorio)
+- [Datos](#datos)
+- [Pipeline](#pipeline)
+- [Dashboard para inversionistas](#modelo-de-agrupamiento-de-sismos)
+- [Sistema de recomendación de restaurantes](#alerta-sísmica)
+
+
 
 ## Metricas
 
@@ -66,3 +82,4 @@ users_ids:
 -   No duplicated or null founded 
 
 
+# El proyecto <a name="proyecto"></a>
