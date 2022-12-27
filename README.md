@@ -41,21 +41,25 @@ Este proyecto se creó para que empresarios y emprendedores puedan identificar o
 - Jonathan Santacana [JCSR2022](https://github.com/JCSR2022)
 
 # Archivos <a name="repo"></a>
-- carpeta con ETL
-    - Creacion_archivos_carga_incremental.ipynb:
-    - ETL.ipynb
-    - Incremental_load.ipynb
-- carpeta con despliegues
-    - app.py
-    - carpeta pages:
-        - trending.py
-        - risk.py
-        - opportunities.py
-        - users.py
+
+- carpeta ETL
+    - Creacion_archivos_carga_incremental.ipynb : notebook para hacer la división de los datasets iniciales en datasets para carga inicial, carga incremental e incremental para pruebas de validación.
+    - ETL.ipynb : Notebook para la extracción, transformación, carga a base de datos SQL de los datos de los usuarios de yelp y para creación del modelo entidad relación.
+    - Incremental_load.ipynb : notebook para la transformación, validación y carga incremental de los datos de nuevas reseñas y usuarios a la base de datos.
+- carpeta Web_App:
+    - requirements.txt : archivo para instalar en el ambiente virtual las librerías necesarias. 
+    - app.py : script para hacer el despliegue de la web app que contiene la página del dashboard y la página del sistema de recomendación. 
+    - Carpeta pages :
+        - trending.py : script con el código de la pestaña de tendencias(Trends) del dashboard.
+        - risk.py : script con el código de la pestaña de riesgos(risks) del dashboard.
+        - opportunities.py : script con el código de la pestaña de oportunidades(opportunities) del dashboard.
+        - users.py : script con el código de la página  del sistema de recomendación de restaurantes
 
 # Datos<a name="datos"></a>
 
-## Diccionario de datos
+Los datos sobre reseñas, usuarios y empresas, fueron obtenidos de el [dataset abierto](https://www.yelp.com/dataset) para propósitos de aprendizaje de la app Yelp que cuenta con cerca de 7 millones de reseñas realizadas por aproximadamente 2 millones de usuarios sobre el servicio y/o producto ofrecido por un poco mas de 150 mil empresas de 13 estados de EEUU.
+
+## Diccionario de datos (!!!!!!!SUPRIMIBLE!!!!!!!!)
 
 users:
 'n_user_id': integer user code,
@@ -68,11 +72,16 @@ users:
 'fans': number of fans, 
 'average_stars': average reviews stars given by the user.
 
-users_ids:
-'n_user_id': integer user code,
-'user_id': alphanumeric user code 
-
 # Pipeline y Stack Tecnológico <a name="pipeline"></a>
+
+## Alacenamiento en bruto y Division de los datos
+En esta etapa se alamacenan los datasets de yelp en bruto en google drive en la carpeta "Dataset Yelp" y se dividen los archivos en bruto user.json, business.json y review.json en tres nuevos sets de archivos .json, esto se logra ejecutando el notebook "Creacion_archivos_carga_incremental.ipynb" el cual automáticamente crea la carpeta  pruebas_incremental con los siguientes archivos:
+1) Archivos de carga inicial: user_inicial.json, business_inicial.json, review_inicial.json.
+2) Archivos para carga incremental batch: user_incremental_#.json, donde # es un entero entre 0 y 7,
+business_incremental.json y review_incremental#.json donde # es un entero entre 1 y 29.
+3) Archivos para carga incremental con errores a creados a propósito para evaluar filtros de validación de formato y de datos duplicados: user_aleatorio.json, user_incremental_con_repeticiones#.json donde # es 8 o 9, business_aleatorio,json, business_incremental_con_repeticiones.json y review_aleatorio.json, review_incremental_con_repeticiones#.json donde #=[30,34]. 
+
+## 
 
 <p align="center">
   <img src="pipeline.png" />
