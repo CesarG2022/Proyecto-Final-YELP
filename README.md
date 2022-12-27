@@ -74,25 +74,36 @@ users:
 
 # Pipeline y Stack Tecnológico <a name="pipeline"></a>
 
-## Alacenamiento en bruto y Division de los datos
+
+
+## Almacenamiento en bruto y División de los datos
 En esta etapa se alamacenan los datasets de yelp en bruto en google drive en la carpeta "Dataset Yelp" y se dividen los archivos en bruto user.json, business.json y review.json en tres nuevos sets de archivos .json, esto se logra ejecutando el notebook "Creacion_archivos_carga_incremental.ipynb" el cual automáticamente crea la carpeta  pruebas_incremental con los siguientes archivos:
 1) Archivos de carga inicial: user_inicial.json, business_inicial.json, review_inicial.json.
 2) Archivos para carga incremental batch: user_incremental_#.json, donde # es un entero entre 0 y 7,
 business_incremental.json y review_incremental#.json donde # es un entero entre 1 y 29.
 3) Archivos para carga incremental con errores a creados a propósito para evaluar filtros de validación de formato y de datos duplicados: user_aleatorio.json, user_incremental_con_repeticiones#.json donde # es 8 o 9, business_aleatorio,json, business_incremental_con_repeticiones.json y review_aleatorio.json, review_incremental_con_repeticiones#.json donde #=[30,34]. 
 
-## 
+## Extracción, transformación y carga a la base de datos
+los datasets divididos y almacenados en drive se convierten en dataframes con la librería pandas y se transforman, validan y estructuran para extraer los datos útiles para el análisis y el sistema de recomendación. El ETL de las cargas incrementales tiene variaciones a causa de las validaciones adicionales necesarias por lo que esta etapa se divide en dos:
+- ETL Carga inicial: se realiza ejecutando el archivo ETL.ipynb en colab, esta proceso se centra en seleccionar las columnas útiles, dar el formato adecuado para que no ocupe mas espacio en memoria del necesario, aspecto importante dado el gran tamaño de los datos, filtrar duplicados, rellenar faltantes, corregir errores de escritura, y crear las tablas, sus claves y las conexiones entre estas con la estructura necesaria para almacenarlas en SQL de manera óptima. 
+- ETL Carga incremental: se realiza ejecutando el archivo Incremental_load.ipynb en colab, adicional a las transformaciones que se realizan en la carga inicial, en este proceso se comprueba que los archivos nuevos tengan el mismo formato de los archivos iniciales y se filtran las reseñas y/o usuarios que ya se encuentran en la base de datos.
+En ambos casos, carga inicial e incremental se realiza la carga a la base de datos cloudsql (la DB SQL en la nube de google) usando SQLalchemy. 
 
+El modelo entidad relación construido para almacenar los datos se muestra a continuación:
+<p align="center">
+  <img src="DER.jpg" />
+</p>
+
+## uso de los datos para el dashboard y el sistema de recomendación
+una vez seleccionados, limpiados y almacenados en el datawarehouse cloudsql, los datos son extraídos para el análisis y el sistema de recomendación usando scripts de python con la librería SQLalchemy. Para el despligue se utilizaron los frameworks dash para construir las gráficas interactivas y flask para el despliegue como web app en la plataforma railway, para el sistema de recomendación de utilizó adicionalmente la API de google Maps para ofrecer la ubicación de los restaurantes recomendados. El script para activar el despliegue de la web app es app.py.
+
+En la siguiente figura se muestra el diagrama del pipeline y el stack tecnologico utilizado.
 <p align="center">
   <img src="pipeline.png" />
 </p>
 
-## stack tecnológico
-- Extraction and transformation:
-- load and storage:
-- analysis:
-- incremental load or streaming
-- Presentation: dash plotly
+ 
+
 
 
 # Dashboard para toma de desiciones de inversión <a name="dashboard"></a>
