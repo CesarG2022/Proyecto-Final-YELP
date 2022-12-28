@@ -76,7 +76,7 @@ En ambos casos, carga inicial e incremental se realiza la carga a la base de dat
 
 El modelo entidad relación construido para almacenar los datos se muestra a continuación:
 <p align="center">
-  <img src="DER.jpg" />
+  <img src="Web_App\imgs\DER.jpg" />
 </p>
 
 ## Uso de los datos para el dashboard y el sistema de recomendación
@@ -84,7 +84,7 @@ una vez seleccionados, limpiados y almacenados en el datawarehouse cloudsql, los
 
 En la siguiente figura se muestra el diagrama del pipeline y el stack tecnológico utilizado.
 <p align="center">
-  <img src="pipeline.png" />
+  <img src="Web_App\imgs\pipeline.png" />
 </p>
 
 # Dashboard para toma de desiciones de inversión <a name="dashboard"></a>
