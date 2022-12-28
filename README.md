@@ -9,7 +9,7 @@
 ---
 - [Descripción del proyecto](#descripcion-del-proyecto-)
 - [Equipo](#equipo-)
-- [Archivos](#archivos)
+- [Archivos](#archivos-)
 - [Datos](#datos)
 - [Pipeline y Stack tecnológico](#pipeline)
 - [Dashboard para toma de desiciones de inversión](#dashboard-para-toma-)
