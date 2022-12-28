@@ -8,17 +8,11 @@
 **Tabla de Contenido:**
 ---
 - [Descripción del proyecto](#descripcion-del-proyecto-)
-proposito, breve descripción y alcances 
 - [Equipo](#equipo-)
-- [Archivos](#el-repositorio)
-lista de archivos y descripcion de funcionalidad
+- [Archivos](#archivos)
 - [Datos](#datos)
-fuente y  link a diccionario  de datos de datos en bruto
-transformación y validación de datos utilizados
 - [Pipeline y Stack tecnológico](#pipeline)
-descripcion de pipeline, der
 - [Dashboard para toma de desiciones de inversión](#dashboard-para-toma-)
-
 - [Sistema de recomendación de restaurantes](#sistema-de-recomendacion)
 
 # Descripción del proyecto <a name="proyecto"></a>
