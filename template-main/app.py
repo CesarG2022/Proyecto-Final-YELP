@@ -26,7 +26,7 @@ app.layout = html.Div([
         ], className='logo'),
         # dcc.Link('home', href='/'),
         dcc.Link('business', href='/trending'),
-        # dcc.Link('users', href='/users'),
+        dcc.Link('users', href='/users'),
         # dcc.Link('about us', href='/about'),
         
     ], className='navbar'),

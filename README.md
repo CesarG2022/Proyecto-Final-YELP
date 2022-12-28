@@ -1,9 +1,9 @@
 <center> <h1>PROYECTO FINAL -PLUS YELP</h1> </center>
 <center> “Connect and simplify big data to make the best investment decisions.”</center></br>
 
-> **Note**<br>
-> This README file is written in Spanish. To go to the English version [click here](README_EN.md).
-
+[comment]: <> (> **Note**<br>)
+[comment]: <> (> This README file is written in Spanish. To go to the English version [click here])
+[comment]: <> (README_EN.md. el nombre de este nombre de archivo debe ir en parentesis redondos) 
 
 **Tabla de Contenido:**
 ---
@@ -59,22 +59,7 @@ Este proyecto se creó para que empresarios y emprendedores puedan identificar o
 
 Los datos sobre reseñas, usuarios y empresas, fueron obtenidos de el [dataset abierto](https://www.yelp.com/dataset) para propósitos de aprendizaje de la app Yelp que cuenta con cerca de 7 millones de reseñas realizadas por aproximadamente 2 millones de usuarios sobre el servicio y/o producto ofrecido por un poco mas de 150 mil empresas de 13 estados de EEUU.
 
-## Diccionario de datos (!!!!!!!SUPRIMIBLE!!!!!!!!)
-
-users:
-'n_user_id': integer user code,
-'review_count': number of reviews written by the user, 
-'yelping_since': user registration date, 
-'useful': number of useful votes given by the users to other user's reviews,
-'funny': number of funny votes given by the users to other user's reviews, 
-'cool': number of cool votes given by the users to other user's reviews, 
-'friends': comma separated str with friend's alphanumeric codes , 
-'fans': number of fans, 
-'average_stars': average reviews stars given by the user.
-
 # Pipeline y Stack Tecnológico <a name="pipeline"></a>
-
-
 
 ## Almacenamiento en bruto y División de los datos
 En esta etapa se alamacenan los datasets de yelp en bruto en google drive en la carpeta "Dataset Yelp" y se dividen los archivos en bruto user.json, business.json y review.json en tres nuevos sets de archivos .json, esto se logra ejecutando el notebook "Creacion_archivos_carga_incremental.ipynb" el cual automáticamente crea la carpeta  pruebas_incremental con los siguientes archivos:
@@ -84,7 +69,7 @@ business_incremental.json y review_incremental#.json donde # es un entero entre 
 3) Archivos para carga incremental con errores a creados a propósito para evaluar filtros de validación de formato y de datos duplicados: user_aleatorio.json, user_incremental_con_repeticiones#.json donde # es 8 o 9, business_aleatorio,json, business_incremental_con_repeticiones.json y review_aleatorio.json, review_incremental_con_repeticiones#.json donde #=[30,34]. 
 
 ## Extracción, transformación y carga a la base de datos
-los datasets divididos y almacenados en drive se convierten en dataframes con la librería pandas y se transforman, validan y estructuran para extraer los datos útiles para el análisis y el sistema de recomendación. El ETL de las cargas incrementales tiene variaciones a causa de las validaciones adicionales necesarias por lo que esta etapa se divide en dos:
+los datasets divididos y almacenados en drive se convierten en dataframes con la librería pandas y se transforman, validan y estructuran para extraer los datos útiles y consistentes para el análisis y el sistema de recomendación. El ETL de las cargas incrementales tiene variaciones a causa de las validaciones adicionales necesarias por lo que esta etapa se divide en dos:
 - ETL Carga inicial: se realiza ejecutando el archivo ETL.ipynb en colab, esta proceso se centra en seleccionar las columnas útiles, dar el formato adecuado para que no ocupe mas espacio en memoria del necesario, aspecto importante dado el gran tamaño de los datos, filtrar duplicados, rellenar faltantes, corregir errores de escritura, y crear las tablas, sus claves y las conexiones entre estas con la estructura necesaria para almacenarlas en SQL de manera óptima. 
 - ETL Carga incremental: se realiza ejecutando el archivo Incremental_load.ipynb en colab, adicional a las transformaciones que se realizan en la carga inicial, en este proceso se comprueba que los archivos nuevos tengan el mismo formato de los archivos iniciales y se filtran las reseñas y/o usuarios que ya se encuentran en la base de datos.
 En ambos casos, carga inicial e incremental se realiza la carga a la base de datos cloudsql (la DB SQL en la nube de google) usando SQLalchemy. 
@@ -94,45 +79,60 @@ El modelo entidad relación construido para almacenar los datos se muestra a con
   <img src="DER.jpg" />
 </p>
 
-## uso de los datos para el dashboard y el sistema de recomendación
+## Uso de los datos para el dashboard y el sistema de recomendación
 una vez seleccionados, limpiados y almacenados en el datawarehouse cloudsql, los datos son extraídos para el análisis y el sistema de recomendación usando scripts de python con la librería SQLalchemy. Para el despligue se utilizaron los frameworks dash para construir las gráficas interactivas y flask para el despliegue como web app en la plataforma railway, para el sistema de recomendación de utilizó adicionalmente la API de google Maps para ofrecer la ubicación de los restaurantes recomendados. El script para activar el despliegue de la web app es app.py.
 
-En la siguiente figura se muestra el diagrama del pipeline y el stack tecnologico utilizado.
+En la siguiente figura se muestra el diagrama del pipeline y el stack tecnológico utilizado.
 <p align="center">
   <img src="pipeline.png" />
 </p>
 
- 
-
-
-
 # Dashboard para toma de desiciones de inversión <a name="dashboard"></a>
 
-## KPI’s (Key Performance Indicator)
+El modelo para el análisis e identificación de opciones y ubicación de inversiones con potencial de alto retorno, se enfocó en la búsqueda de negocios y características de negocios(categoría, subcategoría, localización y atributos) guiada por los siguientes tres aspectos clave:
+1) Alta probabilidad de aceptación por parte de los clientes. 
+2) Bajo riesgo de cierre. 
+3) Oportunidad de cubrir demanda insatisfecha (baja satisfacción y extenso tamaño de mercado). 
 
-Es una metrica **clave,** estas son solo unas cuantas respecto a las metricas pero tienen un alto impacto en el negocio, por lo que mejorarlas representara un inpacto positivo para la empresa,
+Para lograr la identificación se definieron los siguientes 4 índices de rendimiento claves:
 
-entendemos asi que todos los KPI’s son metricas pero no todas las metricas son KPI’s
+1) Variación anual de negocios reseñados positivamente (%VAN): Este KPI refleja el aumento en el tiempo en la apertura de nuevos negocios o la disminución de negocios existentes con buena recepción por parte del público o mercado objetivo, se calcula así:
+$$
+\% VAN = \frac{N_{i} - N_{i-1} }{N_{i-1}} * 100
+$$
+&emsp;&emsp;&emsp; donde:  
+$$  
+i = \text{año} \\
+N_{i} = \text{cantidad de negocios con calificación promedio >=4 del año i} 
+$$ 
 
-1) Variación porcentual del promedio de estrellas(calificación):
-    PCC= (promedio estrellas año 2) - (promedio estrellas año 1) / ((promedio estrellas año 1) *100
+2) Tiempo promedio de vida del cliente (TVC): este indicador mide el lapso en meses entre el primer y último comentario de los clientes y es por tanto un reflejo de la retención de sus clientes, se calcula así:
+$$
+TVC = prom\left(\left(\text{fecha de último review}\right) - \left(\text{fecha de primer review}\right)\right)
+$$
 
-2) Variación porcentual de reviews:
-    PCR = (cantidad de reviews año 2) - (cantidad de reviews año 1) /((cantidad de reviews año 1))
+3) Porcentage de negocios cerrados (%NC): Este KPI indica la estabilidad del o los negocios, se calcula de la siguiente manera:
+$$
+\% NC = \frac{N_{c}}{N_t} *100      
+$$
+&emsp;&emsp;&emsp; donde:  
+$$  
+N_{c} = \text{cantidad de sucursales cerrados.} \\
+N_{c} = \text{cantidad total de sucursales.} 
+$$ 
 
-3) popularidad: 
-    PO = promedio(polaridad*(1-subjetividad))
+4) Estrellas promedio de las reseñas(PE): Este KPI es la métrica que muestra de manera mas exacta la satisfacción del cliente con el servicio y/o producto ofrecido por el negocio.
+    
+Por lo anterior el dashboard se divide en las siguientes tres secciones: 
+- Tendencias(Trending): Esta página esta diseñada para permitirle al inversor identificar el estado en el que debe invertir en un negocio o localizar una nueva sucursal mediante un mapa de EEUU de acuerdo con la satisfacción del cliente (PE) y un mapa(matriz) de calor con la variación temporal de negocios reseñados positivamente (%VAN), además de indicarle mediante wordclouds las subcategorías(sandwiches, american traditional, wine, tours, nails, ....) y los atributos(bike parking, accept credit card, good for kids....) con mayor prevalencia en los rubros o negocios con mejores indicadores. Adicionalmente muestra listas top ten de negocios de acuerdo con los indicadores de retencion(TVC) y satisfacción del cliente(PE). Esta página cuenta con filtros de estado(dando click al estado) y categoría principal(lista desplegable con opciones: restaurants, hotel & travel, beauty & spa, night life, active life, food, arts & entertainment) sobre todos los objetos de la página lo cual permite realizar una búsqueda de tendencias segmentada.
 
-4) porcentaje de sucursales cerradas por rubro
-    CSC = (cantidad de sucursales cerradas) / (cantidad de sucursales totales por rubro) *100
+- Riesgos(Risk): En esta página se pueden identificar en el mapa de EEUU los estados con mayor riesgo de cierre(%NC), en una lista top ten los negocios con mas sucursales y su riesgo de cierre  y la evolución historica del riesgo de cierre para cada una de las categorías principales o rubros estudiados. Para la extracción de información segmentada, el mapa cuenta con filtro de categoría, el top ten cuenta con filtro de categoría y estado y la gráfica de evolución histórica de cierre por categoría cuenta con filtro de estado.
+
+- Oportunidades(Opportunities): Para identificar demanda insatisfecha, se creó la métrica rev_cat_pob que toma valores entre 0 y 100% dependiendo de la fracción de calificaciones negativas(<=3) respecto al total de calificaciones y del tamaño de la población en la localidad, de tal manera que a mayor fracción de calificaciones negativas y a mayor cantidad de población, mayor el valor de rev_cat_pob. En esta página se pueden identificar en el mapa de EEUU los estados con mayores oportunidades para cubrir demanda insatisfecha, asi como en las tablas se pueden identificar negocios y sus ubicaciones(ciudad y dirección) de tal manera que se pueda localizar una sucursal cerca que pueda captar los clientes descontentos. en esta pagina tambien es posible realizar busquedas segmentadas por estado y por categoría principal.
 
 # Sistema de recomendación de restaurantes <a name="sistema-de-recomendacion"></a>
-
-### Users dataset:
-- load: it was made in chunks of 400.000 rows to the dataframe called "users"
-- drop columns: all the columns with amounts of compliments.
-- change data type to use less memory: 'average_stars':np.float32 , 'fans':'uint16', 'review_count':'uint16', 'cool':'uint32', 'useful':'uint32', 'funny':'uint32', yelping_since:'%Y-%m-%d %H:%M:%S'
--  get integer index to replace alphanumeric index: to use less memory the alphanumerid user_id columns was replaced by the dataframe index(0 - 1987896)
--   No duplicated or null founded 
+El sistema de recomendación se construyó para poder dar recomendaciones tanto a usuarios antiguos como nuevos.
+En el caso de los antiguos, el sistema esta basado en contenidos, esto significa que mediante operaciones matriciales se calcula una calificación de recomendación para cada uno de los restaurantes en la ciudad en la que se encuentra localizado el usuario, basada en la confluencia de las sub-categorías(pizza, mexican, chinese,...) del restaurantes con las sub-categorías preferidas por el usuario, las cuales se obtienen de sus reseñas posítivas. Finalmente se listan los restaurantes con mayor calificación de recomendación y se presentan al usuario junto con los horarios de atención, la dirección, estrellas promedio y cantidad de reseñas de otros usuarios y la opción de ver la ubicación del restaurante en un mapa provisto por la API de google Maps.
+Para los usuarios nuevos  el sitema de recomendación se basa en popularidad, es decir presenta al usuario una lista de restaurantes en la misma ubicación del usuario ordenada por las estrellas promedio y la cantidad de reseñas del restaurantes. 
 
 
