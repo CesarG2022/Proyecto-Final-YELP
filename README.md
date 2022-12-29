@@ -7,7 +7,7 @@
 
 **Tabla de Contenido:**
 ---
-- [Descripción del proyecto](#descripcion-del-proyecto-)
+- [Descripción del proyecto](#descripcion-del-proyecto)
 - [Equipo](#equipo-)
 - [Archivos](#archivos-)
 - [Datos](#datos)
