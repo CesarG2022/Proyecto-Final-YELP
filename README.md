@@ -94,7 +94,8 @@ Para lograr la identificación se definieron los siguientes 4 índices de rendim
 $$
 \% VAN = \frac{N_{i} - N_{i-1} }{N_{i-1}} * 100
 $$
-<img src="https://latex.codecogs.com/svg.image?%VAN&space;=&space;\frac{N_{i}&space;-&space;N_{i-1}&space;}{N_{i-1}}&space;*&space;100" title="https://latex.codecogs.com/svg.image?%VAN = \frac{N_{i} - N_{i-1} }{N_{i-1}} * 100" />
+<center><img src="https://latex.codecogs.com/svg.image?\bg{white}%&space;VAN&space;=&space;\frac{N_{i}&space;-&space;N_{i-1}&space;}{N_{i-1}}&space;*&space;100" title="https://latex.codecogs.com/svg.image?\bg{white}% VAN = \frac{N_{i} - N_{i-1} }{N_{i-1}} * 100" /></center>
+
 &emsp;&emsp;&emsp; donde:  
 $$  
 i = \text{año} \\
