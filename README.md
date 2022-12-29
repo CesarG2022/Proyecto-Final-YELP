@@ -91,34 +91,31 @@ El modelo para el análisis e identificación de opciones y ubicación de invers
 Para lograr la identificación se definieron los siguientes 4 índices de rendimiento claves:
 
 1) Variación anual de negocios reseñados positivamente (%VAN): Este KPI refleja el aumento en el tiempo en la apertura de nuevos negocios o la disminución de negocios existentes con buena recepción por parte del público o mercado objetivo, se calcula así:
-$$
-\% VAN = \frac{N_{i} - N_{i-1} }{N_{i-1}} * 100
-$$
+
 <p align="center">
   <img src="https://latex.codecogs.com/svg.image?\bg{white}{\color{White}&space;%VAN&space;=&space;\frac{N_{i}&space;-&space;N_{i-1}&space;}{N_{i-1}}&space;*&space;100}" title="https://latex.codecogs.com/svg.image?\bg{white}{\color{White} %VAN = \frac{N_{i} - N_{i-1} }{N_{i-1}} * 100}" />
 </p>
-
-
 &emsp;&emsp;&emsp; donde:  
-$$  
-i = \text{año} \\
-N_{i} = \text{cantidad de negocios con calificación promedio >=4 del año i} 
-$$ 
+
+&emsp;&emsp;&emsp;<img src="https://latex.codecogs.com/svg.image?{\color{White}&space;i&space;=&space;\text{anio}}&space;" title="https://latex.codecogs.com/svg.image?{\color{White} i = \text{anio}} " />
+
+&emsp;&emsp;&emsp;<img src="https://latex.codecogs.com/svg.image?{\color{White}&space;N_{i}&space;=&space;\text{cantidad&space;de&space;negocios&space;con&space;calificacion&space;promedio&space;mayor&space;a&space;4&space;del&space;anio&space;i}}&space;" title="https://latex.codecogs.com/svg.image?{\color{White} N_{i} = \text{cantidad de negocios con calificacion promedio mayor a 4 del anio i}} " />
 
 2) Tiempo promedio de vida del cliente (TVC): este indicador mide el lapso en meses entre el primer y último comentario de los clientes y es por tanto un reflejo de la retención de sus clientes, se calcula así:
-$$
-TVC = prom\left(\left(\text{fecha de último review}\right) - \left(\text{fecha de primer review}\right)\right)
-$$
+<p align="center">
+  <img src="https://latex.codecogs.com/svg.image?{\color{White}&space;TVC&space;=&space;prom\left(\left(\text{fecha&space;de&space;ultimo&space;review}\right)&space;-&space;\left(\text{fecha&space;de&space;primer&space;review}\right)\right)}" title="https://latex.codecogs.com/svg.image?{\color{White} TVC = prom\left(\left(\text{fecha de ultimo review}\right) - \left(\text{fecha de primer review}\right)\right)}" />
+</p>
 
 3) Porcentage de negocios cerrados (%NC): Este KPI indica la estabilidad del o los negocios, se calcula de la siguiente manera:
-$$
-\% NC = \frac{N_{c}}{N_t} *100      
-$$
+<p align="center">
+  <img src="https://latex.codecogs.com/svg.image?{\color{White}&space;%NC&space;=&space;\frac{N_{c}}{N_t}&space;*100}" title="https://latex.codecogs.com/svg.image?{\color{White} %NC = \frac{N_{c}}{N_t} *100}" />
+</p>
 &emsp;&emsp;&emsp; donde:  
-$$  
-N_{c} = \text{cantidad de sucursales cerrados.} \\
-N_{c} = \text{cantidad total de sucursales.} 
-$$ 
+ 
+&emsp;&emsp;&emsp;  <img src="https://latex.codecogs.com/svg.image?{\color{White}&space;N_{c}&space;=&space;\text{cantidad&space;de&space;sucursales&space;cerradas}}" title="https://latex.codecogs.com/svg.image?{\color{White} N_{c} = \text{cantidad de sucursales cerradas}}" />  
+
+&emsp;&emsp;&emsp; <img src="https://latex.codecogs.com/svg.image?{\color{White}&space;N_{c}&space;=&space;\text{cantidad&space;total&space;de&space;sucursales.}}" title="https://latex.codecogs.com/svg.image?{\color{White} N_{c} = \text{cantidad total de sucursales.}}" /> 
+
 
 4) Estrellas promedio de las reseñas(PE): Este KPI es la métrica que muestra de manera mas exacta la satisfacción del cliente con el servicio y/o producto ofrecido por el negocio.
     
