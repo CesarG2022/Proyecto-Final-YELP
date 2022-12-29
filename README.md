@@ -12,7 +12,7 @@
 - [Archivos](#archivos-)
 - [Datos](#datos)
 - [Pipeline y Stack tecnológico](#pipeline)
-- [Dashboard para toma de desiciones de inversión](#dashboard-)
+- [Dashboard para toma de desiciones de inversión](#dashboard)
 - [Sistema de recomendación de restaurantes](#sistema-de-recomendacion)
 
 # Descripción del proyecto <a name="proyecto"></a>
