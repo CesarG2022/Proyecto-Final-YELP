@@ -15,7 +15,7 @@
 - [Dashboard para toma de desiciones de inversión](#dashboard)
 - [Sistema de recomendación de restaurantes](#sistema-de-recomendacion)
 
-# Descripción del proyecto <a name="proyecto"></a>
+# Descripción del proyecto <a name="descripción"></a>
 
 Este proyecto se creó para que empresarios y emprendedores puedan identificar oportunidades de inversiones en el rubro del ocio(restaurantes, bares, hoteles, entre otros) utilizando información extraida de la opinión de clientes sobre los bienes o servicios prestados por decenas de miles de negocios ubicados en estados unidos y adicionalmente se aprovechó esta gran cantidad de datos para construir un sistema de recomendación de restaurantes para clientes que busquen nuevas experiencias de consumo. 
 
@@ -36,7 +36,7 @@ Este proyecto se creó para que empresarios y emprendedores puedan identificar o
 
 # Archivos <a name="repo"></a>
 
-- carpeta ETL
+- Carpeta ETL
     - Creacion_archivos_carga_incremental.ipynb : notebook para hacer la división de los datasets iniciales en datasets para carga inicial, carga incremental e incremental para pruebas de validación.
     - ETL.ipynb : Notebook para la extracción, transformación, carga a base de datos SQL de los datos de los usuarios de yelp y para creación del modelo entidad relación.
     - Incremental_load.ipynb : notebook para la transformación, validación y carga incremental de los datos de nuevas reseñas y usuarios a la base de datos.
