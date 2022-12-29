@@ -7,7 +7,7 @@
 
 **Tabla de Contenido:**
 ---
-- [Descripción del proyecto](#descripcion-del-proyecto)
+- [Descripción del proyecto](#descripcion)
 - [Equipo](#equipo-)
 - [Archivos](#archivos-)
 - [Datos](#datos)
@@ -15,7 +15,7 @@
 - [Dashboard para toma de desiciones de inversión](#dashboard)
 - [Sistema de recomendación de restaurantes](#sistema-de-recomendacion)
 
-# Descripción del proyecto <a name="descripción"></a>
+# Descripción del proyecto <a name="descripcion"></a>
 
 Este proyecto se creó para que empresarios y emprendedores puedan identificar oportunidades de inversiones en el rubro del ocio(restaurantes, bares, hoteles, entre otros) utilizando información extraida de la opinión de clientes sobre los bienes o servicios prestados por decenas de miles de negocios ubicados en estados unidos y adicionalmente se aprovechó esta gran cantidad de datos para construir un sistema de recomendación de restaurantes para clientes que busquen nuevas experiencias de consumo. 
 
