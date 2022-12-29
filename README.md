@@ -95,7 +95,7 @@ $$
 \% VAN = \frac{N_{i} - N_{i-1} }{N_{i-1}} * 100
 $$
 <p align="center">
-  <img src="https://latex.codecogs.com/svg.image?\bg{white}%&space;VAN&space;=&space;\frac{N_{i}&space;-&space;N_{i-1}&space;}{N_{i-1}}&space;*&space;100" title="https://latex.codecogs.com/svg.image?\bg{white}% VAN = \frac{N_{i} - N_{i-1} }{N_{i-1}} * 100" />
+  <img src="https://latex.codecogs.com/svg.image?\bg{white}{\color{White}&space;%VAN&space;=&space;\frac{N_{i}&space;-&space;N_{i-1}&space;}{N_{i-1}}&space;*&space;100}" title="https://latex.codecogs.com/svg.image?\bg{white}{\color{White} %VAN = \frac{N_{i} - N_{i-1} }{N_{i-1}} * 100}" />
 </p>
 
 
