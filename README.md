@@ -40,7 +40,7 @@ Este proyecto se creó para que empresarios y emprendedores puedan identificar o
     - Creacion_archivos_carga_incremental.ipynb : notebook para hacer la división de los datasets iniciales en datasets para carga inicial, carga incremental e incremental para pruebas de validación.
     - ETL.ipynb : Notebook para la extracción, transformación, carga a base de datos SQL de los datos de los usuarios de yelp y para creación del modelo entidad relación.
     - Incremental_load.ipynb : notebook para la transformación, validación y carga incremental de los datos de nuevas reseñas y usuarios a la base de datos.
-- carpeta Web_App:
+- Carpeta Web_App:
     - requirements.txt : archivo para instalar en el ambiente virtual las librerías necesarias. 
     - app.py : script para hacer el despliegue de la web app que contiene la página del dashboard y la página del sistema de recomendación. 
     - Carpeta pages :
@@ -94,6 +94,7 @@ Para lograr la identificación se definieron los siguientes 4 índices de rendim
 $$
 \% VAN = \frac{N_{i} - N_{i-1} }{N_{i-1}} * 100
 $$
+<img src="https://latex.codecogs.com/svg.image?%VAN&space;=&space;\frac{N_{i}&space;-&space;N_{i-1}&space;}{N_{i-1}}&space;*&space;100" title="https://latex.codecogs.com/svg.image?%VAN = \frac{N_{i} - N_{i-1} }{N_{i-1}} * 100" />
 &emsp;&emsp;&emsp; donde:  
 $$  
 i = \text{año} \\
