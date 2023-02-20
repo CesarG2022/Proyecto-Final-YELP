@@ -19,7 +19,7 @@
 
 Este proyecto se creó para que empresarios y emprendedores puedan identificar oportunidades de inversiones en el rubro del ocio(restaurantes, bares, hoteles, entre otros) utilizando información extraida de la opinión de clientes sobre los bienes o servicios prestados por decenas de miles de negocios ubicados en estados unidos y adicionalmente se aprovechó esta gran cantidad de datos para construir un sistema de recomendación de restaurantes para clientes que busquen nuevas experiencias de consumo. 
 
-Para ver un video resumen del proyecto sigue el siguiente [link](https://youtu.be/CM-4Uv2iD6s)
+Para ver un video resumen del proyecto sigue el [link](https://youtu.be/CM-4Uv2iD6s)
 
 ## Objetivos:
 - Identificación de categorías y características de negocios con alto potencial de aceptación y por tanto de crecimiento y con bajo riesgo de cierre.
